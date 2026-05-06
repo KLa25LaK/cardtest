@@ -1,127 +1,628 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王小明 | 基隆市立中山高中</title>
-    <style>
-        body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        .card {
-            background: white;
-            width: 100%;
-            max-width: 350px;
-            padding: 40px 20px;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .school-logo {
-            width: 80px;
-            margin-bottom: 10px;
-        }
-        .header {
-            margin-bottom: 15px;
-        }
-        h1 { font-size: 18px; margin: 5px 0; color: #003366; line-height: 1.2; }
-        .eng-title { font-size: 11px; color: #777; font-weight: normal; margin-bottom: 15px; }
-        
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: #f0f0f0;
-            margin: 0 auto 15px;
-            border: 3px solid #eee;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 55px;
-        }
-        
-        .name-block {
-            margin-bottom: 20px;
-        }
-        .user-name {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin: 0;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>台北市鼠患防治與挑戰｜文意選填</title>
 
-        .section-title {
-            font-size: 16px;
-            color: #555;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #f0f0f0;
-        }
-        .section-title span {
-            display: block;
-            font-size: 11px;
-            color: #888;
-        }
+<style>
+:root{
+  --bg:#f1f1ee;
+  --card:#fffdf7;
+  --text:#111827;
+  --muted:#6b7280;
+  --black:#111827;
+  --red:#991b1b;
+  --green:#047857;
+  --purple:#5b21b6;
+  --orange:#92400e;
+  --cream:#fff7ed;
+}
 
-        .links { margin-top: 20px; }
-        .btn {
-            display: block;
-            padding: 14px;
-            margin: 10px 0;
-            background: #005087;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            background: #003366;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .btn-secondary { background: #6c757d; }
-        .btn-accent { background: #1a8a34; }
-    </style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at top left,#ffffff 0,#f1f1ee 38%,#e7e5df 100%);
+  font-family:
+    "Inter","Avenir Next","Helvetica Neue",
+    -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;
+  color:var(--text);
+  line-height:1.9;
+  font-size:18px;
+  letter-spacing:.2px;
+}
+
+.mouse-bg{
+  position:fixed;
+  top:16px;
+  right:20px;
+  font-size:34px;
+  opacity:.13;
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{
+  position:relative;
+  z-index:1;
+  max-width:980px;
+  margin:auto;
+  padding:20px 14px 120px;
+}
+
+.card{
+  background:rgba(255,253,247,.96);
+  border:3px solid var(--black);
+  border-radius:24px;
+  padding:22px;
+  margin-bottom:20px;
+  box-shadow:8px 8px 0 var(--black);
+}
+
+.hero{
+  background:
+    linear-gradient(135deg,#fffdf7 0%,#fef3c7 100%);
+}
+
+h1{
+  margin:0 0 10px;
+  font-size:32px;
+  font-weight:950;
+  letter-spacing:.5px;
+}
+
+h2{
+  margin:0 0 14px;
+  font-size:23px;
+  font-weight:950;
+}
+
+.small{
+  color:#374151;
+  font-size:15px;
+  font-weight:650;
+}
+
+.badge{
+  display:inline-block;
+  background:var(--black);
+  color:white;
+  border-radius:999px;
+  padding:4px 12px;
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+
+.btn{
+  border:3px solid var(--black);
+  border-radius:999px;
+  padding:10px 16px;
+  font-weight:950;
+  cursor:pointer;
+  font-size:15px;
+  background:white;
+  color:var(--black);
+  box-shadow:3px 3px 0 var(--black);
+}
+
+.btn.dark{
+  background:var(--black);
+  color:white;
+}
+
+.optionBox{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.option{
+  background:#ffffff;
+  border:3px solid var(--black);
+  border-radius:16px;
+  padding:13px 15px;
+  font-weight:950;
+  text-align:left;
+  cursor:pointer;
+  font-size:19px;
+  color:var(--text);
+  font-family:inherit;
+  box-shadow:4px 4px 0 var(--black);
+}
+
+.option:hover{
+  background:#fef3c7;
+  transform:translateY(-2px);
+}
+
+.passage{
+  font-size:23px;
+  font-weight:520;
+}
+
+.sentence{
+  margin-bottom:24px;
+  border-bottom:2px dashed #d1d5db;
+  padding-bottom:14px;
+}
+
+.blank{
+  color:#7f1d1d;
+  font-weight:950;
+  border:3px solid var(--black);
+  padding:2px 8px;
+  cursor:pointer;
+  background:#fee2e2;
+  border-radius:9px;
+  box-shadow:2px 2px 0 var(--black);
+}
+
+.word{
+  cursor:pointer;
+  border-radius:7px;
+  padding:1px 5px;
+  font-weight:850;
+}
+
+.lv3{color:var(--green);background:#ecfdf5}
+.lv4{color:var(--purple);background:#f5f3ff}
+.lv5,.lv6{color:var(--red);background:#fff1f2}
+
+.grammar{
+  color:var(--orange);
+  font-weight:950;
+  cursor:pointer;
+  background:#fef3c7;
+  border-radius:8px;
+  padding:1px 6px;
+  border:2px solid var(--black);
+}
+
+.trans{
+  color:var(--purple);
+  border-bottom:2px dashed var(--purple);
+  cursor:pointer;
+  margin-left:8px;
+  font-size:15px;
+  font-weight:950;
+}
+
+.popup{
+  position:absolute;
+  background:white;
+  border:4px solid var(--black);
+  border-radius:20px;
+  padding:20px;
+  max-width:min(560px,calc(100vw - 30px));
+  box-shadow:9px 9px 0 var(--black);
+  z-index:9999;
+  line-height:1.85;
+  font-size:17px;
+}
+
+.close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  cursor:pointer;
+  font-weight:950;
+}
+
+.tag{
+  display:inline-block;
+  background:var(--black);
+  color:white;
+  border-radius:999px;
+  padding:4px 12px;
+  font-size:14px;
+  font-weight:950;
+  margin-bottom:10px;
+}
+
+.zh,.teachBox{
+  background:#f8fafc;
+  border:2px solid #e5e7eb;
+  padding:12px;
+  border-radius:14px;
+  margin-top:10px;
+}
+
+.correctBox{
+  background:#eff6ff;
+  border:2px solid #bfdbfe;
+  border-radius:14px;
+  padding:10px;
+  margin:10px 0;
+}
+
+.wrongBox{
+  background:#fff7ed;
+  border:2px solid #fed7aa;
+  border-radius:14px;
+  padding:12px;
+  margin-top:10px;
+}
+
+.grammarBox{
+  background:#f5f3ff;
+  border:2px solid #ddd6fe;
+  border-radius:14px;
+  padding:12px;
+  margin-top:10px;
+}
+
+.sound{
+  margin-top:10px;
+  border:3px solid var(--black);
+  border-radius:999px;
+  background:var(--black);
+  color:white;
+  padding:8px 13px;
+  cursor:pointer;
+  font-weight:950;
+  font-size:15px;
+}
+
+.leveltag{
+  display:inline-block;
+  background:#f3f4f6;
+  border:2px solid var(--black);
+  border-radius:999px;
+  padding:1px 8px;
+  font-size:12px;
+  font-weight:950;
+  margin-left:6px;
+}
+
+.teachList{
+  margin:8px 0 0 22px;
+  padding:0;
+}
+
+.hide-lv .word{
+  background:transparent!important;
+  color:inherit!important;
+  font-weight:inherit!important;
+}
+
+.fab-container{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:10000;
+}
+
+.fab-container button{
+  border:3px solid var(--black);
+  border-radius:999px;
+  padding:12px 18px;
+  font-weight:950;
+  cursor:pointer;
+  box-shadow:4px 4px 0 var(--black);
+}
+
+.btn-home{background:#fef3c7;color:var(--black)}
+.btn-close{background:var(--black);color:white}
+
+@media(max-width:640px){
+  h1{font-size:26px}
+  .optionBox{grid-template-columns:1fr}
+  .passage{font-size:20px}
+  .popup{font-size:16px}
+  .card{padding:18px;box-shadow:5px 5px 0 var(--black)}
+}
+</style>
 </head>
+
 <body>
+<div class="mouse-bg">🐭 🧀 🐭 🧀 🐭</div>
 
-<div class="card">
-    <!-- 學校 Logo 與 校名 -->
-    <div class="header">
-        <img src="https://www.csgh.kl.edu.tw/resource/open_data/school_logo.png" alt="中山高中Logo" class="school-logo">
-        <h1>基隆市立中山高級中學</h1>
-        <div class="eng-title">Keelung Municipal Zhongshan Senior High School</div>
-    </div>
+<div class="container">
 
-    <!-- 短髮女性頭像 -->
-    <div class="avatar">👩🏻‍💼</div>
+<section class="card hero">
+<div class="badge">Self-study Reading Lab</div>
+<h1>🐭 台北市鼠患防治與挑戰 🧀</h1>
+<div class="small">
+點 A～J 看意思、用法、發音｜點紅色空格看完整解析｜橘色是片語／文法提示｜Level 3 以上單字會標色
+</div>
+<div class="toolbar">
+<button class="btn" onclick="toggleLevelColors()">切換 Level 標色</button>
+<button class="btn dark" onclick="toggleTranslation()">顯示／隱藏全文翻譯</button>
+</div>
+</section>
 
-    <!-- 姓名與單位 -->
-    <div class="name-block">
-        <p class="user-name">王小明</p>
-        <div class="section-title">
-            國際教育小組
-            <span>International Education Team</span>
-        </div>
-    </div>
-    
-    <!-- 功能按鈕 -->
-    <div class="links">
-        <a href="https://www.csgh.kl.edu.tw" target="_blank" class="btn">🏫 學校網頁 Official Website</a>
-        <a href="mailto:international@csgh.kl.edu.tw" class="btn btn-secondary">📧 國際教育小組 Email</a>
-        <a href="mailto:aaa@aaa.com" class="btn btn-accent">✍️ 聯絡我 Contact Me</a>
-    </div>
+<section class="card">
+<h2>選項 Vocabulary Bank</h2>
+<div class="optionBox" id="optionBox"></div>
+</section>
+
+<section class="card passage" id="passage"></section>
+
+<section class="card" id="fullTranslation" style="display:none">
+<h2>全文翻譯</h2>
+<div class="zh">
+近年來，台北因夜市快速擴張與老舊排水系統，面臨嚴重的鼠患問題。老鼠不只會破壞財物，也會傳播疾病，對城市居民造成潛在健康風險。為了解決這個問題，政府已經實施各種方案來改善公共衛生。維持高標準的食品衛生，是控制鼠群數量最有效的方法。
+</div>
+</section>
+
 </div>
 
+<div class="fab-container">
+<button class="btn-home" onclick="goHome()">🏠 回首頁</button>
+<button class="btn-close" onclick="closePopup()">關閉提示</button>
+</div>
+
+<script>
+const vocab={
+severe:{level:4,pos:"adj.",zh:"嚴重的"},
+rodent:{level:5,pos:"n.",zh:"齧齒動物"},
+due:{level:3,pos:"adj.",zh:"由於；到期的"},
+expansion:{level:4,pos:"n.",zh:"擴張；擴大"},
+drainage:{level:5,pos:"n.",zh:"排水；排水系統"},
+systems:{base:"system"},system:{level:3,pos:"n.",zh:"系統"},
+property:{level:3,pos:"n.",zh:"財產"},
+potential:{level:3,pos:"adj./n.",zh:"潛在的；潛力"},
+risks:{base:"risk"},risk:{level:3,pos:"n.",zh:"風險"},
+residents:{base:"resident"},resident:{level:3,pos:"n.",zh:"居民"},
+implemented:{base:"implement"},implement:{level:4,pos:"v.",zh:"實施；執行"},
+various:{level:3,pos:"adj.",zh:"各種的"},
+sanitation:{level:5,pos:"n.",zh:"公共衛生；環境衛生"},
+hygiene:{level:4,pos:"n.",zh:"衛生"}
+};
+
+const options={
+A:"effective",
+B:"expansion",
+C:"hygiene",
+D:"population",
+E:"potential",
+F:"residents",
+G:"sanitation",
+H:"severe",
+I:"solutions",
+J:"spread"
+};
+
+const optionInfo={
+A:{word:"effective",pos:"adj.",zh:"有效的",use:"the most effective way 最有效的方法"},
+B:{word:"expansion",pos:"n.",zh:"擴張；擴大",use:"rapid expansion 快速擴張"},
+C:{word:"hygiene",pos:"n.",zh:"衛生",use:"food hygiene 食品衛生"},
+D:{word:"population",pos:"n.",zh:"人口；數量；族群",use:"rat population 老鼠數量"},
+E:{word:"potential",pos:"adj./n.",zh:"潛在的；潛力",use:"potential health risks 潛在健康風險"},
+F:{word:"residents",pos:"n.",zh:"居民",use:"city residents 城市居民"},
+G:{word:"sanitation",pos:"n.",zh:"公共衛生；環境衛生",use:"public sanitation 公共衛生"},
+H:{word:"severe",pos:"adj.",zh:"嚴重的",use:"severe rodent problem 嚴重鼠患問題"},
+I:{word:"solutions",pos:"n.",zh:"解決方案",use:"implement solutions 實施解決方案"},
+J:{word:"spread",pos:"v./n.",zh:"傳播；散布",use:"spread diseases 傳播疾病"}
+};
+
+const grammarInfo={
+dueTo:{
+title:"due to 片語",
+explain:"due to 是片語，意思是「因為；由於」，後面通常接名詞或名詞片語。",
+example:"The game was canceled due to heavy rain. 比賽因為大雨而取消。"
+},
+notOnly:{
+title:"not only...but also 文法",
+explain:"not only A but also B 表示「不只 A，也 B」。A 和 B 的詞性或結構通常要一致。這句中 damage 和 spread 都是動詞。",
+example:"He not only sings well but also dances well. 他不只唱得好，也跳得好。"
+},
+posingRisks:{
+title:"pose / posing ... risks 常用語",
+explain:"pose risks 表示「造成風險」。posing ... risks 是分詞構句，用來補充前面整件事造成的結果。",
+example:"Too much sugar poses health risks. 太多糖會造成健康風險。"
+},
+addressVerb:{
+title:"address 的動詞用法",
+explain:"address 在這裡不是「地址」，而是動詞，意思是「處理；解決問題」。",
+example:"The government must address the housing problem. 政府必須處理住房問題。"
+}
+};
+
+const blankInfo={
+1:{answer:"H severe",pos:"a ___ rodent problem：空格後面是名詞片語，所以需要形容詞。",why:"後文提到疾病與健康風險，表示問題很嚴重。",wrong:["effective problem 語意不合理。","potential problem 語氣太弱。"],grammar:"a + 形容詞 + 名詞。",example:"This is a serious problem. 這是一個嚴重的問題。"},
+2:{answer:"B expansion",pos:"the rapid ___ of night markets：rapid 是形容詞，後面需要名詞。",why:"expansion of night markets 表示夜市擴張。",wrong:["spread 常接 disease、fire、rumors，不自然接 night markets。","population 不適合形容 night markets。"],grammar:"the + 形容詞 + 名詞 + of...",example:"The rapid growth of cities creates problems. 城市快速成長造成問題。"},
+3:{answer:"J spread",pos:"not only damage property but also ___ diseases：but also 後面要和 damage 一樣放動詞。",why:"spread diseases 是固定搭配。",wrong:["solutions 是名詞。","population 是名詞，不能接 diseases。"],grammar:"not only A but also B，A/B 結構要一致。",example:"She not only studies hard but also helps others. 她不只努力讀書，也幫助別人。"},
+4:{answer:"E potential",pos:"___ health risks：health risks 是名詞片語，前面需要形容詞。",why:"potential health risks 是常見搭配。",wrong:["severe 可通，但 severe 更適合第 1 題。","effective health risks 不合理。"],grammar:"pose + risks 表示造成風險。",example:"Air pollution poses health risks. 空污造成健康風險。"},
+5:{answer:"F residents",pos:"to city ___：to 後面需要名詞，而且是承受風險的人。",why:"city residents 表示城市居民。",wrong:["population 不如 residents 自然。","sanitation 不是人。"],grammar:"risk to + 人。",example:"The smoke is a risk to children. 煙對孩子有風險。"},
+6:{answer:"I solutions",pos:"various ___：various 後面通常接複數名詞。",why:"implement solutions 表示實施解決方案。",wrong:["sanitation 是不可數名詞。","hygiene 不是一項項方案。"],grammar:"various + 複數名詞。",example:"The school offers various activities. 學校提供各種活動。"},
+7:{answer:"G sanitation",pos:"public ___：public 是形容詞，後面需要名詞。",why:"public sanitation 表示公共衛生／環境衛生。",wrong:["hygiene 偏個人或食品衛生。","population 語意不合理。"],grammar:"improve + 名詞。",example:"The city improved public transportation. 這座城市改善大眾交通。"},
+8:{answer:"C hygiene",pos:"food ___：需要名詞和 food 組成名詞片語。",why:"food hygiene 是食品衛生。",wrong:["sanitation 偏公共環境衛生。","solutions 語意不合。"],grammar:"名詞 + 名詞。",example:"School rules are important. 校規很重要。"},
+9:{answer:"A effective",pos:"the most ___ way：way 是名詞，前面需要形容詞。",why:"the most effective way 表示最有效的方法。",wrong:["severe way 不自然。","potential way 不自然。"],grammar:"the most + 形容詞 + 名詞。",example:"This is the most useful tool. 這是最有用的工具。"},
+10:{answer:"D population",pos:"the rat ___：需要名詞。",why:"rat population 表示老鼠數量。",wrong:["residents 是居民。","spread 不符合語意。"],grammar:"control + 動物 + population。",example:"The park controls the deer population. 公園控制鹿的數量。"}
+};
+
+const sentences=[
+{txt:"In recent years, Taipei has faced a [[1]] rodent problem {{due to|dueTo}} the rapid [[2]] of night markets and old drainage systems.",trans:"近年來，台北因夜市快速擴張與老舊排水系統，面臨嚴重的鼠患問題。"},
+{txt:"Rats {{not only|notOnly}} damage property {{but also|notOnly}} [[3]] diseases, {{posing|posingRisks}} [[4]] health risks to city [[5]].",trans:"老鼠不只會破壞財物，也會傳播疾病，對城市居民造成潛在健康風險。"},
+{txt:"To {{address|addressVerb}} this, the government has implemented various [[6]] to improve public [[7]].",trans:"為了解決這個問題，政府已經實施各種方案來改善公共衛生。"},
+{txt:"Maintaining high standards of food [[8]] is the most [[9]] way to control the rat [[10]].",trans:"維持高標準的食品衛生，是控制鼠群數量最有效的方法。"}
+];
+
+function getVocab(word){
+let d=vocab[word.toLowerCase()];
+if(d && d.base) d=vocab[d.base];
+return d;
+}
+
+function markWords(text){
+let grammarStore=[];
+text=text.replace(/\{\{(.+?)\|(.+?)\}\}/g,(m,phrase,key)=>{
+let id=grammarStore.length;
+grammarStore.push({phrase,key});
+return `@@GRAM${id}@@`;
+});
+
+text=text.replace(/\[\[(\d+)\]\]/g,(m,n)=>`@@BLANK${n}@@`);
+
+text=text.replace(/\b[A-Za-z]+\b/g,word=>{
+let d=getVocab(word);
+if(d && d.level>=3){
+return `<span class="word lv${d.level}" onclick="showWord(event,'${word.toLowerCase()}')">${word}</span>`;
+}
+return word;
+});
+
+text=text.replace(/@@BLANK(\d+)@@/g,(m,n)=>`<span class="blank" onclick="showBlank(event,${n})">(${n}) ___</span>`);
+
+text=text.replace(/@@GRAM(\d+)@@/g,(m,i)=>{
+let g=grammarStore[i];
+return `<span class="grammar" onclick="showGrammar(event,'${g.key}')">${g.phrase}</span>`;
+});
+
+return text;
+}
+
+function renderOptions(){
+document.getElementById("optionBox").innerHTML=
+Object.entries(options).map(([k,v])=>`
+<button class="option" onclick="showOption(event,'${k}')">(${k}) ${v}</button>
+`).join("");
+}
+
+function renderPassage(){
+document.getElementById("passage").innerHTML=
+sentences.map(s=>`
+<div class="sentence">
+${markWords(s.txt)}
+<span class="trans" onclick="showTranslation(event,'${s.trans}')">中</span>
+</div>
+`).join("");
+}
+
+function showGrammar(event,key){
+const d=grammarInfo[key];
+popup(event,`
+<span class="close" onclick="closePopup()">×</span>
+<div class="tag">片語／文法</div>
+<b>${d.title}</b>
+<div class="grammarBox">${d.explain}<br><br><b>例句：</b>${d.example}</div>
+`);
+}
+
+function showOption(event,key){
+const d=optionInfo[key];
+popup(event,`
+<span class="close" onclick="closePopup()">×</span>
+<div class="tag">選項 ${key}</div>
+<b>${d.word}</b><br>
+<b>詞性：</b>${d.pos}<br>
+<b>中文：</b>${d.zh}<br>
+<b>常見用法：</b>${d.use}<br>
+<button class="sound" onclick="speakWord('${d.word}')">🔊 發音</button>
+`);
+}
+
+function showBlank(event,num){
+const d=blankInfo[num];
+popup(event,`
+<span class="close" onclick="closePopup()">×</span>
+<div class="tag">第 ${num} 題完整解析</div>
+<div class="correctBox"><b>答案：</b>${d.answer}</div>
+<div class="teachBox"><b>① 先判斷詞性</b><br>${d.pos}</div>
+<div class="teachBox"><b>② 為什麼選這個？</b><br>${d.why}</div>
+<div class="wrongBox"><b>③ 學生可能會選錯的選項</b><ul class="teachList">${d.wrong.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+<div class="grammarBox"><b>④ 文法觀念</b><br>${d.grammar}<br><br><b>例句：</b>${d.example}</div>
+`);
+}
+
+function showWord(event,word){
+const d=getVocab(word);
+popup(event,`
+<span class="close" onclick="closePopup()">×</span>
+<div class="tag">Level ${d.level} 單字</div>
+<b>${word}</b><span class="leveltag">Level ${d.level}</span><br>
+<b>詞性：</b>${d.pos}<br>
+<b>中文：</b>${d.zh}<br>
+<button class="sound" onclick="speakWord('${word}')">🔊 發音</button>
+`);
+}
+
+function showTranslation(event,text){
+popup(event,`
+<span class="close" onclick="closePopup()">×</span>
+<div class="tag">中文翻譯</div>
+<div class="zh">${text}</div>
+`);
+}
+
+function popup(event,html){
+closePopup();
+const div=document.createElement("div");
+div.className="popup";
+div.innerHTML=html;
+document.body.appendChild(div);
+
+const rect=event.target.getBoundingClientRect();
+let left=rect.left+window.scrollX;
+let top=rect.bottom+window.scrollY+10;
+
+if(left+560>window.innerWidth) left=window.innerWidth-580;
+if(left<10) left=10;
+
+div.style.left=left+"px";
+div.style.top=top+"px";
+
+window.currentPopup=div;
+}
+
+function closePopup(){
+if(window.currentPopup){
+window.currentPopup.remove();
+window.currentPopup=null;
+}
+}
+
+function speakWord(word){
+speechSynthesis.cancel();
+const u=new SpeechSynthesisUtterance(word);
+u.lang="en-US";
+u.rate=0.85;
+speechSynthesis.speak(u);
+}
+
+function toggleTranslation(){
+const box=document.getElementById("fullTranslation");
+box.style.display=box.style.display==="none"?"block":"none";
+}
+
+function toggleLevelColors(){
+document.body.classList.toggle("hide-lv");
+}
+
+function goHome(){
+window.location.href="index.html";
+}
+
+document.addEventListener("click",e=>{
+if(
+window.currentPopup &&
+!window.currentPopup.contains(e.target) &&
+!e.target.classList.contains("blank") &&
+!e.target.classList.contains("word") &&
+!e.target.classList.contains("option") &&
+!e.target.classList.contains("trans") &&
+!e.target.classList.contains("grammar")
+){
+closePopup();
+}
+});
+
+renderOptions();
+renderPassage();
+</script>
 </body>
 </html>
